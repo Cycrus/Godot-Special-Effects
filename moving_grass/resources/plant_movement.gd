@@ -18,7 +18,7 @@ class_name PlantMovement
 ## The wind controller providing dynamics data for wind-controlled movement.
 @export var wind_controller: WindController
 ## The max skew a wind controller can cause.
-@export_range(-89, 89) var max_wind_skew: float = 25.0
+@export_range(-89, 89) var max_wind_skew: float = 35.0
 
 @export_category("Body/Area Motion Settings")
 ## The meta tag to detect which areas or bodies can affect the skew of the sprite.
@@ -26,7 +26,7 @@ class_name PlantMovement
 ## The max distance in pixels a body or area can affect the sprite from.
 @export var max_distance: float = 40.0
 ## The max skew a body or area can cause while going through the sprite.
-@export_range(-89, 89) var max_body_skew: float = 30.0
+@export_range(-89, 89) var max_body_skew: float = 80.0
 
 @export_category("Random Motion Settings")
 ## The noise value added to the movements if the random movement is active.
@@ -34,7 +34,7 @@ class_name PlantMovement
 
 @export_category("Wavelike Motion Settings")
 ## The max skew the default wavelike motion can cause.
-@export_range(-89, 89) var max_wavelike_skew: float = 6.0
+@export_range(-89, 89) var max_wavelike_skew: float = 8.0
 ## The speed of the wavelike motion.
 @export var wavelike_movement_speed: float = 1.2
 
@@ -56,12 +56,23 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var currently_wind_affected = false
+	var skew_values: Array = []
 	if wind_affected:
-		currently_wind_affected = _process_wind_effect()
-	if wavelike_movement and not currently_wind_affected:
-		_process_wavelike_movement()
+		var wind_skew = _process_wind_effect()
+		skew_values.append(wind_skew)
+	if wavelike_movement:
+		var wavelike_skew = _process_wavelike_movement()
+		skew_values.append(wavelike_skew)
 	if body_affected:
-		_process_affecting_bodies()
+		var body_skew = _process_affecting_bodies()
+		skew_values.append(body_skew)
+		
+	skew_value = 0.0
+	for new_skew_value in skew_values:
+		if new_skew_value != INF:
+			skew_value += new_skew_value
+	skew_value /= skew_values.size()
+		
 	if random_movement:
 		_process_random_movement()
 		
@@ -72,8 +83,9 @@ func _set_skew_zero() -> void:
 	skew_value = 0.0
 	
 
-func _process_wavelike_movement() -> void:
-	skew_value = wavelike_direction * sin(timer * wavelike_movement_speed) * max_wavelike_skew
+func _process_wavelike_movement() -> float:
+	var wavelike_skew = wavelike_direction * sin(timer * wavelike_movement_speed) * max_wavelike_skew
+	return wavelike_skew
 	
 
 func _get_body_distance_vector(body: Node2D) -> Vector2:
@@ -96,19 +108,21 @@ func _compute_body_skew_ratio(body: Node2D) -> float:
 	return body_skew_ratio
 	
 
-func _process_affecting_bodies() -> void:
+func _process_affecting_bodies() -> float:
 	var skew_ratio_sum: float = 0.0
 	if affecting_bodies.size() > 0:
 		for body in affecting_bodies:
 			var body_skew_ratio = _compute_body_skew_ratio(body)
 			skew_ratio_sum -= body_skew_ratio
-		skew_value = skew_ratio_sum / affecting_bodies.size() * max_body_skew
+		var body_skew = skew_ratio_sum / affecting_bodies.size() * max_body_skew
+		return body_skew
+	return INF
 		
 
-func _process_wind_effect() -> bool:
+func _process_wind_effect() -> float:
 	var wind_strength: Vector2 = wind_controller.get_wind_strength(global_position)
-	skew_value = wind_strength.length() * max_wind_skew * sign(wind_strength.x)
-	return wind_strength.length() > 0.0
+	var wind_skew = wind_strength.length() * max_wind_skew * sign(wind_strength.x)
+	return wind_skew
 		
 		
 func _process_random_movement() -> void:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwnc17pg84424"]
+
+[ext_resource type="Script" path="res://moving_grass/resources/plant_movement.gd" id="1_4al75"]
+
+[node name="PlantMotionController" type="Node2D"]
+script = ExtResource("1_4al75")
+random_movement = true
+body_affected = true
+wind_affected = true
+wavelike_movement = true
