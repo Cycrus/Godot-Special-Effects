@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://cfkh2rbdnjvn6"]
+
+[ext_resource type="Shader" path="res://water_shading/resources/water_shader.gdshader" id="1_421th"]
+[ext_resource type="Texture2D" uid="uid://d0lfkl4565iyq" path="res://water_shading/resources/sand.jpg" id="1_mr0ad"]
+[ext_resource type="Texture2D" uid="uid://bfibd3yush3dc" path="res://water_shading/resources/icon.svg" id="2_aqi8o"]
+[ext_resource type="Shader" path="res://water_shading/resources/black_shader.gdshader" id="4_d5qfj"]
+[ext_resource type="Texture2D" uid="uid://dpl42u5w2k0lx" path="res://water_shading/resources/island.png" id="4_dpmhs"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s3a8f"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gjc51"]
+width = 1032
+height = 1977
+seamless = true
+noise = SubResource("FastNoiseLite_s3a8f")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_51xnj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lj5ht"]
+width = 1882
+height = 572
+seamless = true
+noise = SubResource("FastNoiseLite_51xnj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhskj"]
+shader = ExtResource("1_421th")
+shader_parameter/scroll1 = Vector2(0.01, 0.01)
+shader_parameter/scroll2 = Vector2(-0.005, -0.005)
+shader_parameter/distortion_strength = 0.01
+shader_parameter/tone_color = Color(0.718868, 1, 0.955294, 0.482353)
+shader_parameter/top_color = Color(1, 1, 1, 0.247059)
+shader_parameter/light_start = 0.376
+shader_parameter/light_end = 0.422
+shader_parameter/pixel_number = 0.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_gjc51")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_lj5ht")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kco81"]
+shader = ExtResource("4_d5qfj")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sand" type="Sprite2D" parent="."]
+position = Vector2(631, 365)
+scale = Vector2(1.456, 1.63834)
+texture = ExtResource("1_mr0ad")
+
+[node name="Water" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xhskj")
+position = Vector2(633, 364)
+scale = Vector2(13.0156, 8.69343)
+texture = ExtResource("2_aqi8o")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kco81")
+position = Vector2(687, 272)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_dpmhs")
+
+[node name="Island" type="Sprite2D" parent="."]
+position = Vector2(661, 287.499)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_dpmhs")
