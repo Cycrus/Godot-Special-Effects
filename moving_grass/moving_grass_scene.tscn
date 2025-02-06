@@ -47,7 +47,7 @@ rendering_quadrant_size = 64
 [node name="WindController" parent="." instance=ExtResource("4_qh0qt")]
 wind_direction = Vector2(-1, 0.85)
 wind_strength = 1.0
-wind_strength_noise = 0.249
+wind_strength_noise = 0.06
 wind_starting_plane = Vector2(1000, -100)
 wind_travel_distance = 2000.0
 wind_spawn_interval = 4.0

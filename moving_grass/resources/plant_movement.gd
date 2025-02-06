@@ -24,7 +24,7 @@ class_name PlantMovement
 ## The meta tag to detect which areas or bodies can affect the skew of the sprite.
 @export var body_move_meta_tag: String = "moves_plants"
 ## The max distance in pixels a body or area can affect the sprite from.
-@export var max_distance: float = 40.0
+@export var max_distance: float = 70.0
 ## The max skew a body or area can cause while going through the sprite.
 @export_range(-89, 89) var max_body_skew: float = 80.0
 

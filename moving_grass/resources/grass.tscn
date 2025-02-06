@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dwnc17pg84424" path="res://moving_grass/resources/plant_motion_controller.tscn" id="2_wf7pq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdbd6"]
-radius = 25.0
-height = 60.0
+radius = 45.0
+height = 90.0
 
 [node name="Grass" type="Node2D"]
 script = ExtResource("1_aoq80")
@@ -20,12 +20,13 @@ offset = Vector2(-1, -31)
 
 [node name="Collider" type="CollisionShape2D" parent="Area2D"]
 visible = false
-position = Vector2(1, 2)
+position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_rdbd6")
 
 [node name="PlantMotionController" parent="." node_paths=PackedStringArray("skewed_sprite") instance=ExtResource("2_wf7pq")]
 random_movement = false
 skewed_sprite = NodePath("../Sprite2D")
+max_wind_skew = 50.0
 
 [connection signal="area_entered" from="Area2D" to="PlantMotionController" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="PlantMotionController" method="_on_area_2d_area_exited"]
