@@ -2,30 +2,64 @@ extends Node2D
 
 class_name PlantMovement
 
+@export_category("General Motion Settings")
+## If set to true, random movement noise is added to all other movement types. Can lead to more dynamic behavior. All movement types are listed descendingly by priority.
 @export var random_movement: bool = false
+## If set to true, bodies and areas equipped with a certain meta tag move the sprites away while going through.
 @export var body_affected: bool = false
+## If set to true, a wind controller can affect the grass. You need to assign the desired wind controller manually.
 @export var wind_affected: bool = false
+## If set to true, the plants will perform a dynamic wavelike movement while not affected by anything else.
 @export var wavelike_movement: bool = false
-@export var wind_controller: WindController
+## The sprite to skew with all movement types.
 @export var skewed_sprite: Sprite2D
+
+@export_category("Wind Motion Settings")
+## The wind controller providing dynamics data for wind-controlled movement.
+@export var wind_controller: WindController
+## The max skew a wind controller can cause.
+@export_range(-89, 89) var max_wind_skew: float = 25.0
+
+@export_category("Body/Area Motion Settings")
+## The meta tag to detect which areas or bodies can affect the skew of the sprite.
+@export var body_move_meta_tag: String = "moves_plants"
+## The max distance in pixels a body or area can affect the sprite from.
 @export var max_distance: float = 40.0
-@export var max_body_skew: float = 20.0
-@export var max_wind_skew: float = 15.0
-@export var random_movement_value: float = 0.2
+## The max skew a body or area can cause while going through the sprite.
+@export_range(-89, 89) var max_body_skew: float = 30.0
+
+@export_category("Random Motion Settings")
+## The noise value added to the movements if the random movement is active.
+@export_range(0, 1) var random_movement_value: float = 0.2
+
+@export_category("Wavelike Motion Settings")
+## The max skew the default wavelike motion can cause.
+@export_range(-89, 89) var max_wavelike_skew: float = 6.0
+## The speed of the wavelike motion.
+@export var wavelike_movement_speed: float = 1.2
 
 var affecting_bodies: Array = []
 var skew_value: float = 0.0
+var wavelike_direction: float = 0.0
+var timer: float = 0.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	wavelike_direction = sign(randf() - 0.5)
+	
+	
+func _physics_process(delta: float) -> void:
+	timer += delta
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var currently_wind_affected = false
 	if wind_affected:
-		_process_wind_effect()
+		currently_wind_affected = _process_wind_effect()
+	if wavelike_movement and not currently_wind_affected:
+		_process_wavelike_movement()
 	if body_affected:
 		_process_affecting_bodies()
 	if random_movement:
@@ -36,6 +70,10 @@ func _process(delta: float) -> void:
 
 func _set_skew_zero() -> void:
 	skew_value = 0.0
+	
+
+func _process_wavelike_movement() -> void:
+	skew_value = wavelike_direction * sin(timer * wavelike_movement_speed) * max_wavelike_skew
 	
 
 func _get_body_distance_vector(body: Node2D) -> Vector2:
@@ -66,10 +104,11 @@ func _process_affecting_bodies() -> void:
 			skew_ratio_sum -= body_skew_ratio
 		skew_value = skew_ratio_sum / affecting_bodies.size() * max_body_skew
 		
-		
-func _process_wind_effect() -> void:
+
+func _process_wind_effect() -> bool:
 	var wind_strength: Vector2 = wind_controller.get_wind_strength(global_position)
 	skew_value = wind_strength.length() * max_wind_skew * sign(wind_strength.x)
+	return wind_strength.length() > 0.0
 		
 		
 func _process_random_movement() -> void:
@@ -82,7 +121,7 @@ func _apply_skew() -> void:
 		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_meta("moves_plants"):
+	if area.get_meta(body_move_meta_tag):
 		affecting_bodies.append(area)
 	
 
@@ -92,7 +131,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.get_meta("moves_plants"):
+	if body.get_meta(body_move_meta_tag):
 		affecting_bodies.append(body)
 
 

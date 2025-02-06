@@ -7,11 +7,13 @@ class_name WindController
 @export var continuous_wind: bool = false
 ## The direction the wind is blowing. Is later normalized, so any vector.
 @export var wind_direction: Vector2 = Vector2(1.0, 0.0)
+
 @export_category("Continuous Wind Settings")
 ## Selects the continuous wind strength (only valid when in continuous wind mode).
 @export_range(0, 1) var wind_strength: float
 ## Sets a noise parameter for the wind strength to make it more interesting (only valid when in continuous wind mode).
 @export_range(0, 1) var wind_strength_noise: float
+
 @export_category("Wavelike Wind Settings")
 ## The starting point of any wind wave. Is not a dot but a 1d plane (or line) where the wind is spawned from.
 @export var wind_starting_plane: Vector2 = Vector2(0, 0)
@@ -41,15 +43,20 @@ func _process(delta: float) -> void:
 	pass
 	#print(get_wind_strength(Vector2(400, 0)))
 	
+	
 func _physics_process(delta: float) -> void:
 	wave_timer += delta
-	_move_and_remove_wind_waves(delta)
-	_add_new_wind_wave()
+	
+	if not continuous_wind:
+		_move_and_remove_wind_waves(delta)
+		_add_new_wind_wave()
+	
 	
 func _is_wave_alive(wave: Vector2, epsilon: float = 10.0) -> bool:
 	var wave_start_distance = (wave - wind_origin).length()
 	var wave_end_distance = (wave - wind_end).length()
 	return wave_start_distance + wave_end_distance < wind_travel_distance + epsilon
+		
 		
 func _move_and_remove_wind_waves(delta: float) -> void:
 	for wind_wave_idx in range(wind_wave_list.size(), 0, -1):
@@ -59,12 +66,31 @@ func _move_and_remove_wind_waves(delta: float) -> void:
 		if not _is_wave_alive(wind_wave_list[wind_wave_idx]):
 			wind_wave_list.remove_at(wind_wave_idx)
 			
+			
 func _add_new_wind_wave() -> void:
 	if wave_timer >= wind_spawn_interval:
 		wind_wave_list.append(Vector2(wind_origin))
 		wave_timer = 0.0
-
+		
+		
 func get_wind_strength(probing_position: Vector2) -> Vector2:
+	if continuous_wind:
+		return _get_continuous_wind_strength(probing_position)
+	else:
+		return _get_wavelike_wind_strength(probing_position)
+
+
+func _get_continuous_wind_strength(probing_position: Vector2) -> Vector2:
+	var curr_wind_strength = wind_strength
+	curr_wind_strength += (randf() * 2 - 1) * wind_strength_noise
+	if curr_wind_strength > 1.0:
+		curr_wind_strength = 1.0
+	elif curr_wind_strength < 0.0:
+		curr_wind_strength = 0.0
+	return curr_wind_strength * wind_direction
+
+
+func _get_wavelike_wind_strength(probing_position: Vector2) -> Vector2:
 	var proj_position = probing_position.project(wind_direction)
 	var closest_wind_wave_distance: float = INF
 	for wind_wave in wind_wave_list:

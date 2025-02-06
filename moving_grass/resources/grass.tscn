@@ -9,8 +9,11 @@ height = 60.0
 
 [node name="Grass" type="Node2D" node_paths=PackedStringArray("skewed_sprite")]
 script = ExtResource("1_sqw44")
+random_movement = true
+body_affected = true
+wind_affected = true
+wavelike_movement = true
 skewed_sprite = NodePath("Sprite2D")
-max_body_skew = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 31)
