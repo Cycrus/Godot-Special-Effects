@@ -11,7 +11,7 @@ gradient = SubResource("Gradient_gn272")
 width = 15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35xmi"]
-size = Vector2(28, 28)
+size = Vector2(28, 14)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_oxj2w")
@@ -24,4 +24,5 @@ texture = SubResource("GradientTexture1D_arrva")
 metadata/moves_plants = true
 
 [node name="Collider" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_35xmi")
