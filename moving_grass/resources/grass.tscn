@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b26v6ws2uwa5a"]
+[gd_scene load_steps=6 format=3 uid="uid://b26v6ws2uwa5a"]
 
 [ext_resource type="Script" path="res://moving_grass/resources/grass.gd" id="1_aoq80"]
 [ext_resource type="Texture2D" uid="uid://bxiv4tmjgv6mf" path="res://moving_grass/resources/long_grass.png" id="1_e55vm"]
@@ -6,7 +6,16 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdbd6"]
 radius = 45.0
-height = 90.0
+height = 124.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ykrvu"]
+particle_flag_disable_z = true
+direction = Vector3(-0.875, -0.465, 0)
+spread = 31.5
+initial_velocity_min = 195.27
+initial_velocity_max = 195.27
+gravity = Vector3(0, 98, 0)
+color = Color(0.947268, 0.977126, 0.923496, 1)
 
 [node name="Grass" type="Node2D"]
 script = ExtResource("1_aoq80")
@@ -28,7 +37,15 @@ random_movement = false
 skewed_sprite = NodePath("../Sprite2D")
 max_wind_skew = 50.0
 
-[connection signal="area_entered" from="Area2D" to="PlantMotionController" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="PlantMotionController" method="_on_area_2d_area_exited"]
-[connection signal="body_entered" from="Area2D" to="PlantMotionController" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="PlantMotionController" method="_on_area_2d_body_exited"]
+[node name="Pollen" type="GPUParticles2D" parent="."]
+position = Vector2(1, -12)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_ykrvu")
+lifetime = 0.9
+one_shot = true
+explosiveness = 0.76
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

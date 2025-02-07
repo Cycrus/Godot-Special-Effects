@@ -34,12 +34,12 @@ float circle_sdf(vec2 origin, float radius, float screen_aspect_ratio, vec2 scre
 	vec2 frag_pos = screen_uv - origin;
     frag_pos.x *= screen_aspect_ratio;
 	float origin_distance = length(frag_pos);
-	
+
 	if(radius <= 0.0)
 	{
 		return 1.0;
 	}
-	
+
 	float clamped_value = origin_distance / (radius);
 	return clamp(clamped_value, 0.0, 1.0);
 }
@@ -60,10 +60,10 @@ void fragment() {
 	vec2 center = vec2(0.5, 0.5);
 	vec2 screen_size = vec2(1.0 / SCREEN_PIXEL_SIZE.x, 1.0 / SCREEN_PIXEL_SIZE.y);
     float aspect_ratio = screen_size.x / screen_size.y;
-	
+
 	vec2 uv_texture = pixelate_uv(UV);
 	float fog_cutout_value = circle_sdf(center, clear_radius, aspect_ratio, SCREEN_UV);
-	
+
 	vec4 noise_color = texture(noise, uv_texture + TIME * scroll);
 	float intensity_change = sin(TIME * intensity_change_speed);
 	intensity_change = remap_value(intensity_change, -1.0, 1.0, intensity_change_min, 1.0);

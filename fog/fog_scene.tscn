@@ -14,13 +14,13 @@ noise = SubResource("FastNoiseLite_t8qde")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mhin"]
 shader = ExtResource("2_4x2eq")
 shader_parameter/fog_color = Color(1, 1, 1, 1)
-shader_parameter/fog_density = 1.2
+shader_parameter/fog_density = 1.8
 shader_parameter/scroll = Vector2(0.02, 0.02)
 shader_parameter/intensity_change_speed = 2.2
-shader_parameter/intensity_change_min = 0.6
-shader_parameter/clear_radius = 0.6
+shader_parameter/intensity_change_min = 0.2
+shader_parameter/clear_radius = 0.5
 shader_parameter/clear_softness = 0.3
-shader_parameter/pixel_number = 300.0
+shader_parameter/pixel_number = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_8utjw")
 
 [sub_resource type="Gradient" id="Gradient_rpu3c"]

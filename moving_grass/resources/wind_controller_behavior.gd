@@ -41,7 +41,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
-	#print(get_wind_strength(Vector2(400, 0)))
 	
 	
 func _physics_process(delta: float) -> void:
@@ -97,6 +96,8 @@ func _get_wavelike_wind_strength(probing_position: Vector2) -> Vector2:
 		var wind_wave_distance = (proj_position - wind_wave).length()
 		if wind_wave_distance < closest_wind_wave_distance:
 			closest_wind_wave_distance = wind_wave_distance
+		elif wind_wave_distance > closest_wind_wave_distance:
+			break
 	if closest_wind_wave_distance > wind_width / 2:
 		return Vector2(0, 0)
 		

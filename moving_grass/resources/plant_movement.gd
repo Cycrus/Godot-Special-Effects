@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name PlantMovement
+class_name PlantMotionController
 
 @export_category("General Motion Settings")
 ## If set to true, random movement noise is added to all other movement types. Can lead to more dynamic behavior. All movement types are listed descendingly by priority.
@@ -127,28 +127,18 @@ func _process_wind_effect() -> float:
 		
 func _process_random_movement() -> void:
 	skew_value += (randf() * 2 - 1) * random_movement_value # Positivation and scaling of random value
-		
+
 		
 func _apply_skew() -> void:
 	var skew_value_rad: float = deg_to_rad(skew_value)
 	skewed_sprite.set_skew(skew_value_rad)
 		
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_meta(body_move_meta_tag):
-		affecting_bodies.append(area)
-	
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	if area in affecting_bodies:
-		affecting_bodies.erase(area)
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
+		
+func add_affecting_body(body: Node2D) -> void:
 	if body.get_meta(body_move_meta_tag):
 		affecting_bodies.append(body)
+		
 
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func remove_affecting_body(body: Node2D) -> void:
 	if body in affecting_bodies:
 		affecting_bodies.erase(body)
