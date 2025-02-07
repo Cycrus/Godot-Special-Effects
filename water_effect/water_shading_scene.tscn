@@ -112,7 +112,6 @@ do_mirror = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="River/Area2D"]
 visible = false
 position = Vector2(6.69999, -7.90001)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_akuxb")
 
 [node name="Pond" type="Sprite2D" parent="."]
@@ -129,7 +128,6 @@ do_mirror = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pond/Area2D"]
 visible = false
 position = Vector2(6.69998, 4.88304)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f3bt0")
 
 [node name="Shadow" type="TileMapLayer" parent="."]
