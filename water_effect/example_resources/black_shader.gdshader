@@ -7,7 +7,7 @@ void fragment() {
 	if(color.a > 0.01)
 	{
 		float alpha = smoothstep(0.0, 0.05, color.a);
-		COLOR = vec4(0.0, 0.0, 0.0, 0.5 * alpha);
+		COLOR = vec4(0.0, 0.0, 0.0, 1.0);
 	}
 }
 

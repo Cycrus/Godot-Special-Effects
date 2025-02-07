@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpl42u5w2k0lx"
-path="res://.godot/imported/island.png-872a609438534d2d7a0adfbee5a3664c.ctex"
+uid="uid://r3v35i8jdvks"
+path="res://.godot/imported/long_grass.png-530dff5b7b79cae43633c401e3128727.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://water_effect/example_resources/island.png"
-dest_files=["res://.godot/imported/island.png-872a609438534d2d7a0adfbee5a3664c.ctex"]
+source_file="res://water_effect/example_resources/long_grass.png"
+dest_files=["res://.godot/imported/long_grass.png-530dff5b7b79cae43633c401e3128727.ctex"]
 
 [params]
 
