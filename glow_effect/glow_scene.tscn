@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7u6ybrb8sbjo"]
+
+[ext_resource type="Texture2D" uid="uid://vjf0y2p8janw" path="res://glow_effect/example_resources/lighthouse.webp" id="1_2nbok"]
+[ext_resource type="Texture2D" uid="uid://c6xmnfpp8f02o" path="res://glow_effect/example_resources/light.webp" id="2_8kr2d"]
+
+[sub_resource type="Environment" id="Environment_k4jl4"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_levels/2 = 1.5
+glow_levels/3 = 2.0
+glow_levels/5 = 1.8
+glow_levels/6 = 1.2
+glow_intensity = 0.6
+glow_strength = 1.1
+glow_blend_mode = 1
+glow_hdr_threshold = 0.89
+glow_hdr_scale = 0.0
+fog_sun_scatter = 2.1
+fog_density = 0.6513
+fog_height_density = 11.8261
+
+[node name="GlowScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(580, 330)
+
+[node name="Lighthouse" type="Sprite2D" parent="."]
+position = Vector2(429, 328)
+texture = ExtResource("1_2nbok")
+
+[node name="Light" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(519, 186)
+texture = ExtResource("2_8kr2d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k4jl4")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 801.0
+offset_right = 1416.0
+offset_bottom = 164.0
+text = "Instructions
+1. In Project/Project Settings/Rendering/Viewport set HDR 2D to true.
+2. Create World Environment, set Background to Canvas and enable Glow.
+3. In the Sprite under Visibility set the Modulate raw color value to above 1.
+4. Modify the WorldEnvironment settings as needed."

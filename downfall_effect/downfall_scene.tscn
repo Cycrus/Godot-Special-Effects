@@ -7,14 +7,14 @@
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(800, 1, 1)
-direction = Vector3(0.258819, 0.965926, 0)
-spread = 5.52
+direction = Vector3(0.317139, 0.948379, 0)
+spread = 8.0
 initial_velocity_min = 400.0
 initial_velocity_max = 1120.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.2173
 scale_max = 0.82
-color = Color(255, 255, 255, 0.7)
+color = Color(1, 1, 1, 0.701961)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2dk4p"]
 particle_flag_disable_z = true
@@ -38,18 +38,21 @@ position = Vector2(584, 332)
 position = Vector2(564, -44)
 particle_material = SubResource("ParticleProcessMaterial_d2pqp")
 width = 800.0
-direction = 15.0
-intensity = 0.2
+lifetime = 1.0
+direction = 18.49
+intensity = 0.298
 max_velocity = 0.28
-trail_size = 0.059
 min_size = 0.265
 max_size = 0.041
-turbulences = 0.069
+color = Color(1, 1, 1, 0.701961)
+trail_size = 0.035
+turbulences = 0.1
 
 [node name="Snow" parent="." instance=ExtResource("1_74jot")]
 position = Vector2(564, -43)
 particle_material = SubResource("ParticleProcessMaterial_2dk4p")
 width = 800.0
+lifetime = 3.0
 direction = 10.0
 max_velocity = 0.071
 max_size = 0.01

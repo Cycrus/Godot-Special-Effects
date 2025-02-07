@@ -4,7 +4,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t8qde"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8utjw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4pq7r"]
 width = 500
 height = 500
 seamless = true
@@ -20,12 +20,12 @@ shader_parameter/intensity_change_min = 0.3
 shader_parameter/clear_radius = 0.5
 shader_parameter/clear_softness = 0.3
 shader_parameter/pixel_number = 0.0
-shader_parameter/noise = SubResource("NoiseTexture2D_8utjw")
+shader_parameter/noise = SubResource("NoiseTexture2D_4pq7r")
 
-[sub_resource type="Gradient" id="Gradient_rpu3c"]
+[sub_resource type="Gradient" id="Gradient_u2pru"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1mybh"]
-gradient = SubResource("Gradient_rpu3c")
+gradient = SubResource("Gradient_u2pru")
 
 [node name="FogScene" type="Node2D"]
 
