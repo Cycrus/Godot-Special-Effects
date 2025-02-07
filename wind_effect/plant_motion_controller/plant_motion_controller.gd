@@ -54,8 +54,7 @@ func _physics_process(delta: float) -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var currently_wind_affected = false
+func _process(_delta: float) -> void:
 	var skew_values: Array = []
 	if wind_affected:
 		var wind_skew = _process_wind_effect()
@@ -135,8 +134,9 @@ func _apply_skew() -> void:
 		
 		
 func add_affecting_body(body: Node2D) -> void:
-	if body.get_meta(body_move_meta_tag):
-		affecting_bodies.append(body)
+	if body.has_meta(body_move_meta_tag):
+		if body.get_meta(body_move_meta_tag):
+			affecting_bodies.append(body)
 		
 
 func remove_affecting_body(body: Node2D) -> void:

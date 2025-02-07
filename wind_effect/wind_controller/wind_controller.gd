@@ -39,7 +39,7 @@ func _ready() -> void:
 	wind_end = wind_origin + wind_direction * wind_travel_distance
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 	
@@ -60,7 +60,6 @@ func _is_wave_alive(wave: Vector2, epsilon: float = 10.0) -> bool:
 func _move_and_remove_wind_waves(delta: float) -> void:
 	for wind_wave_idx in range(wind_wave_list.size(), 0, -1):
 		wind_wave_idx -= 1
-		var wind_wave = wind_wave_list[wind_wave_idx]
 		wind_wave_list[wind_wave_idx] += wind_direction * wind_speed * delta
 		if not _is_wave_alive(wind_wave_list[wind_wave_idx]):
 			wind_wave_list.remove_at(wind_wave_idx)
@@ -74,12 +73,12 @@ func _add_new_wind_wave() -> void:
 		
 func get_wind_strength(probing_position: Vector2) -> Vector2:
 	if continuous_wind:
-		return _get_continuous_wind_strength(probing_position)
+		return _get_continuous_wind_strength()
 	else:
 		return _get_wavelike_wind_strength(probing_position)
 
 
-func _get_continuous_wind_strength(probing_position: Vector2) -> Vector2:
+func _get_continuous_wind_strength() -> Vector2:
 	var curr_wind_strength = wind_strength
 	curr_wind_strength += (randf() * 2 - 1) * wind_strength_noise
 	if curr_wind_strength > 1.0:
@@ -102,5 +101,5 @@ func _get_wavelike_wind_strength(probing_position: Vector2) -> Vector2:
 		return Vector2(0, 0)
 		
 	# Cosine Bell Curve to control wind strength around wind wave peaks
-	var wind_strength = 0.5 * (1.0 + cos(PI * closest_wind_wave_distance / (wind_width / 2)))
-	return wind_strength * wind_direction
+	var curr_wind_strength = 0.5 * (1.0 + cos(PI * closest_wind_wave_distance / (wind_width / 2)))
+	return curr_wind_strength * wind_direction
