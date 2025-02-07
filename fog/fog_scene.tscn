@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwv8g75gd1617"]
+[gd_scene load_steps=7 format=3 uid="uid://bwv8g75gd1617"]
 
-[ext_resource type="Texture2D" uid="uid://kxry1bwpaupr" path="res://fog/resources/background.jpg" id="1_1l1aj"]
 [ext_resource type="Shader" path="res://fog/resources/fog_shader.gdshader" id="2_4x2eq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t8qde"]
@@ -17,7 +16,7 @@ shader_parameter/fog_color = Color(1, 1, 1, 1)
 shader_parameter/fog_density = 1.8
 shader_parameter/scroll = Vector2(0.02, 0.02)
 shader_parameter/intensity_change_speed = 2.2
-shader_parameter/intensity_change_min = 0.2
+shader_parameter/intensity_change_min = 0.3
 shader_parameter/clear_radius = 0.5
 shader_parameter/clear_softness = 0.3
 shader_parameter/pixel_number = 0.0
@@ -29,11 +28,6 @@ shader_parameter/noise = SubResource("NoiseTexture2D_8utjw")
 gradient = SubResource("Gradient_rpu3c")
 
 [node name="FogScene" type="Node2D"]
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(600, 372)
-scale = Vector2(1.76225, 1.76225)
-texture = ExtResource("1_1l1aj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(584, 331)

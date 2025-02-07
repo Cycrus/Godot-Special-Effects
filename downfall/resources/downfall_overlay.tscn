@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuduy3mvwor6x"]
+
+[ext_resource type="Script" path="res://downfall/resources/downfall_controller.gd" id="1_w3oq0"]
+
+[node name="Downfall" type="Node2D"]
+script = ExtResource("1_w3oq0")
