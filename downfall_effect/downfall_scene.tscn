@@ -9,25 +9,32 @@ emission_shape = 3
 emission_box_extents = Vector3(800, 1, 1)
 direction = Vector3(0.317139, 0.948379, 0)
 spread = 8.0
-initial_velocity_min = 400.0
-initial_velocity_max = 1120.0
+initial_velocity_min = 360.0
+initial_velocity_max = 720.0
 gravity = Vector3(0, 98, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
 scale_min = 0.2173
 scale_max = 0.82
 color = Color(1, 1, 1, 0.701961)
+turbulence_noise_scale = 4.0
+turbulence_noise_speed = Vector3(0.2, 0.2, 0)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2dk4p"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4su1t"]
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(800, 1, 1)
 direction = Vector3(0.173648, 0.984808, 0)
-spread = 10.0
-initial_velocity_min = 142.0
-initial_velocity_max = 284.0
+spread = 10.16
+initial_velocity_min = 217.752
+initial_velocity_max = 516.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.1
 scale_max = 0.2
 color = Color(255, 255, 255, 0.7)
+turbulence_enabled = true
+turbulence_noise_scale = 4.0
+turbulence_noise_speed = Vector3(0.2, 0.2, 0)
 
 [node name="DownfallScene" type="Node2D"]
 
@@ -35,13 +42,14 @@ color = Color(255, 255, 255, 0.7)
 position = Vector2(584, 332)
 
 [node name="Rain" parent="." instance=ExtResource("1_74jot")]
+visible = false
 position = Vector2(564, -44)
 particle_material = SubResource("ParticleProcessMaterial_d2pqp")
 width = 800.0
-lifetime = 1.0
+lifetime = 2.0
 direction = 18.49
-intensity = 0.298
-max_velocity = 0.28
+intensity = 0.151
+max_velocity = 0.18
 min_size = 0.265
 max_size = 0.041
 color = Color(1, 1, 1, 0.701961)
@@ -49,12 +57,15 @@ trail_size = 0.035
 turbulences = 0.1
 
 [node name="Snow" parent="." instance=ExtResource("1_74jot")]
-position = Vector2(564, -43)
-particle_material = SubResource("ParticleProcessMaterial_2dk4p")
+position = Vector2(554, -90)
+particle_material = SubResource("ParticleProcessMaterial_4su1t")
 width = 800.0
-lifetime = 3.0
+lifetime = 40.0
 direction = 10.0
-max_velocity = 0.071
+intensity = 0.453
+min_velocity = 0.422
+max_velocity = 0.129
 max_size = 0.01
 texture = ExtResource("2_nkyhg")
-turbulences = 0.125
+turbulences = 0.127
+motion_noise = true

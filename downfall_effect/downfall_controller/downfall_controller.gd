@@ -104,6 +104,12 @@ extends Node
 		turbulences = value
 		set_turbulences(turbulences)
 		
+## Allows for more interesting flight patterns of the downfall particles. However, drastically slows the particles down.
+@export var motion_noise: bool = false:
+	set(value):
+		motion_noise = value
+		set_motion_noise(motion_noise)
+		
 		
 var max_speed = 4000
 var trail_max_lifetime = 0.3
@@ -177,3 +183,9 @@ func set_rotation_speed(rotation_speed: float) -> void:
 func set_turbulences(turbulences: float) -> void:
 	if $Emitter:
 		$Emitter.process_material.spread = max_turbulences * turbulences
+		
+func set_motion_noise(motion_noise: bool) -> void:
+	if $Emitter:
+		$Emitter.process_material.turbulence_enabled = motion_noise
+		$Emitter.process_material.turbulence_noise_speed = Vector3(0.2, 0.2, 0.0)
+		$Emitter.process_material.turbulence_noise_scale = 4.0
