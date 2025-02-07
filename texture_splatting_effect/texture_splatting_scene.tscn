@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjtw7kr6fewoe"]
+
+[ext_resource type="Shader" path="res://texture_splatting_effect/texture_splatting_shader/texture_splatting_shader.gdshader" id="1_wvh4e"]
+[ext_resource type="Texture2D" uid="uid://dlfxmegbknjjw" path="res://texture_splatting_effect/example_resources/texture_map.png" id="2_sf75s"]
+[ext_resource type="Texture2D" uid="uid://2shqoixmlmm3" path="res://texture_splatting_effect/example_resources/grass.png" id="3_h6suy"]
+[ext_resource type="Texture2D" uid="uid://yp5n41cyajda" path="res://texture_splatting_effect/example_resources/path.png" id="4_lhv6t"]
+[ext_resource type="Texture2D" uid="uid://d06ohidqdeiax" path="res://texture_splatting_effect/example_resources/water.png" id="5_ba8ye"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g0bp"]
+shader = ExtResource("1_wvh4e")
+shader_parameter/scale = 10.0
+shader_parameter/texture_size = 0.0
+shader_parameter/splatmap = ExtResource("2_sf75s")
+shader_parameter/texture1 = ExtResource("4_lhv6t")
+shader_parameter/texture2 = ExtResource("3_h6suy")
+shader_parameter/texture3 = ExtResource("5_ba8ye")
+
+[node name="Mainscene" type="Node2D"]
+
+[node name="Terrain" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4g0bp")
+position = Vector2(437, 304)
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("2_sf75s")

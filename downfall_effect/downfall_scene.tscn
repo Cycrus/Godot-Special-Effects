@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpsk5ltje1qsq"]
+
+[ext_resource type="PackedScene" uid="uid://cuduy3mvwor6x" path="res://downfall_effect/downfall_controller/downfall_overlay.tscn" id="1_74jot"]
+[ext_resource type="Texture2D" uid="uid://chsdcsnyviqfo" path="res://downfall_effect/example_resources/snowflake.png" id="2_nkyhg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d2pqp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(800, 1, 1)
+direction = Vector3(0.258819, 0.965926, 0)
+spread = 5.52
+initial_velocity_min = 400.0
+initial_velocity_max = 1120.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.2173
+scale_max = 0.82
+color = Color(255, 255, 255, 0.7)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2dk4p"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(800, 1, 1)
+direction = Vector3(0.173648, 0.984808, 0)
+spread = 10.0
+initial_velocity_min = 142.0
+initial_velocity_max = 284.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(255, 255, 255, 0.7)
+
+[node name="DownfallScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(584, 332)
+
+[node name="Rain" parent="." instance=ExtResource("1_74jot")]
+position = Vector2(564, -44)
+particle_material = SubResource("ParticleProcessMaterial_d2pqp")
+width = 800.0
+direction = 15.0
+intensity = 0.2
+max_velocity = 0.28
+trail_size = 0.059
+min_size = 0.265
+max_size = 0.041
+turbulences = 0.069
+
+[node name="Snow" parent="." instance=ExtResource("1_74jot")]
+position = Vector2(564, -43)
+particle_material = SubResource("ParticleProcessMaterial_2dk4p")
+width = 800.0
+direction = 10.0
+max_velocity = 0.071
+max_size = 0.01
+texture = ExtResource("2_nkyhg")
+turbulences = 0.125
