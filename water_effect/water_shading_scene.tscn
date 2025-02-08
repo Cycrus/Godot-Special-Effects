@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cfkh2rbdnjvn6"]
+[gd_scene load_steps=28 format=4 uid="uid://cfkh2rbdnjvn6"]
 
 [ext_resource type="Shader" path="res://water_effect/water_controller/water_shader.gdshader" id="1_421th"]
 [ext_resource type="Texture2D" uid="uid://d0lfkl4565iyq" path="res://water_effect/example_resources/sand.jpg" id="1_mr0ad"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccfi31mwtu1sw" path="res://water_effect/water_controller/water.tscn" id="5_8djwa"]
 [ext_resource type="Texture2D" uid="uid://waucc7qdy8ag" path="res://water_effect/example_resources/grass_texture.png" id="6_48kfh"]
 [ext_resource type="Texture2D" uid="uid://r3v35i8jdvks" path="res://water_effect/example_resources/long_grass.png" id="6_jrmyk"]
+[ext_resource type="Shader" path="res://water_effect/water_controller/water_mirror_shader.gdshader" id="7_iufua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_48h8h"]
 texture = ExtResource("6_48kfh")
@@ -47,6 +48,27 @@ shader_parameter/light_end = 0.73
 shader_parameter/pixel_number = 0.0
 shader_parameter/noise1 = SubResource("NoiseTexture2D_emtyi")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_d2rhq")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cx3ub"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hvxdb"]
+seamless = true
+noise = SubResource("FastNoiseLite_cx3ub")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_chr4w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8aruu"]
+seamless = true
+noise = SubResource("FastNoiseLite_chr4w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m01o8"]
+shader = ExtResource("7_iufua")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.66, -0.05)
+shader_parameter/distortion_strength = 0.3
+shader_parameter/tone_color = Color(0.27451, 0.372549, 0.192157, 1)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_hvxdb")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_8aruu")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk6ck"]
 size = Vector2(64.73, 64.39)
@@ -428,12 +450,12 @@ do_mirror = true
 mirror_detection_shape = SubResource("RectangleShape2D_knx17")
 water_material = SubResource("ShaderMaterial_o4vp2")
 show_mirror_detection_shape = false
+mirror_image_material = SubResource("ShaderMaterial_m01o8")
 
 [node name="River" parent="." instance=ExtResource("5_8djwa")]
 z_index = -1
 position = Vector2(247, 262)
 scale = Vector2(15, 18)
-do_mirror = true
 mirror_detection_shape = SubResource("RectangleShape2D_xk6ck")
 water_material = SubResource("ShaderMaterial_gu5hk")
 show_mirror_detection_shape = false

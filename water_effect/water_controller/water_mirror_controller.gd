@@ -15,6 +15,7 @@ extends Node2D
 	set(value):
 		show_mirror_detection_shape = value
 		_show_mirror_detection_shape(show_mirror_detection_shape)
+@export var mirror_image_material: ShaderMaterial
 
 var mirrored_objects: Dictionary = {}
 
@@ -46,11 +47,12 @@ func _add_mirrored_object(body: Node2D) -> void:
 			"y_offset": 0.0
 		}
 		add_child(mirrored_objects[body]["sprite"])
-		mirrored_objects[body]["sprite"].z_index = z_index - 1
+		mirrored_objects[body]["sprite"].z_index = z_index + 1
 		mirrored_objects[body]["sprite"].flip_v = true
 		mirrored_objects[body]["sprite"].global_position = sprite.global_position
 		mirrored_objects[body]["sprite"].scale = Vector2(sprite.global_scale.x / global_scale.x,
 												   		 sprite.global_scale.y / global_scale.y)
+		mirrored_objects[body]["sprite"].material = mirror_image_material
 		if body.get_parent().has_meta("mirror_offset"):
 			mirrored_objects[body]["y_offset"] = body.get_parent().get_meta("mirror_offset")
 
