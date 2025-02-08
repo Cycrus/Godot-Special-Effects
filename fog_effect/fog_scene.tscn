@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwv8g75gd1617"]
+[gd_scene load_steps=8 format=3 uid="uid://bwv8g75gd1617"]
 
 [ext_resource type="Shader" path="res://fog_effect/fog_shader/fog_shader.gdshader" id="2_4x2eq"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="2_75ufk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t8qde"]
 
@@ -31,6 +32,8 @@ gradient = SubResource("Gradient_u2pru")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(584, 331)
+
+[node name="Player" parent="." instance=ExtResource("2_75ufk")]
 
 [node name="Fog" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_3mhin")

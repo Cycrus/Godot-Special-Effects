@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d6kkk1n2enuq"]
+[gd_scene load_steps=5 format=3 uid="uid://d6kkk1n2enuq"]
 
 [ext_resource type="Shader" path="res://pixelation_effect/pixelation_shader/pixelation_shader.gdshader" id="1_7vjry"]
 [ext_resource type="Texture2D" uid="uid://2lyo2v88b6lp" path="res://pixelation_effect/example_resources/skyline.jpg" id="2_alx87"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="3_q4ofg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sec00"]
 shader = ExtResource("1_7vjry")
@@ -13,3 +14,5 @@ shader_parameter/pixel_number_x = 400.0
 material = SubResource("ShaderMaterial_sec00")
 position = Vector2(715, 254)
 texture = ExtResource("2_alx87")
+
+[node name="Player" parent="." instance=ExtResource("3_q4ofg")]

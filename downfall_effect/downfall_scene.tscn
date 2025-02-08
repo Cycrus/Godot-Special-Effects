@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpsk5ltje1qsq"]
+[gd_scene load_steps=6 format=3 uid="uid://bpsk5ltje1qsq"]
 
 [ext_resource type="PackedScene" uid="uid://cuduy3mvwor6x" path="res://downfall_effect/downfall_controller/downfall_overlay.tscn" id="1_74jot"]
 [ext_resource type="Texture2D" uid="uid://chsdcsnyviqfo" path="res://downfall_effect/example_resources/snowflake.png" id="2_nkyhg"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="3_2ddt4"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d2pqp"]
 particle_flag_disable_z = true
@@ -41,8 +42,9 @@ turbulence_noise_speed = Vector3(0.2, 0.2, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(584, 332)
 
+[node name="Player" parent="." instance=ExtResource("3_2ddt4")]
+
 [node name="Rain" parent="." instance=ExtResource("1_74jot")]
-visible = false
 position = Vector2(564, -44)
 particle_material = SubResource("ParticleProcessMaterial_d2pqp")
 width = 800.0

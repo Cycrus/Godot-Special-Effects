@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="EffectDemos"
+run/main_scene="res://effect_selection/effect_selection.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[autoload]
+
+GlobalButtonInput="*res://effect_selection/global_resources/global_button_input.tscn"
 
 [display]
 

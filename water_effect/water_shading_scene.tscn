@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://water_effect/water_controller/water_shader.gdshader" id="1_421th"]
 [ext_resource type="Texture2D" uid="uid://d0lfkl4565iyq" path="res://water_effect/example_resources/sand.jpg" id="1_mr0ad"]
-[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://wind_effect/example_resources/player.tscn" id="1_mw6tm"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="1_mw6tm"]
 [ext_resource type="PackedScene" uid="uid://ccfi31mwtu1sw" path="res://water_effect/water_controller/water.tscn" id="5_8djwa"]
 [ext_resource type="Texture2D" uid="uid://waucc7qdy8ag" path="res://water_effect/example_resources/grass_texture.png" id="6_48kfh"]
 [ext_resource type="Texture2D" uid="uid://r3v35i8jdvks" path="res://water_effect/example_resources/long_grass.png" id="6_jrmyk"]
@@ -96,7 +96,7 @@ shader_parameter/scroll1 = Vector2(-0.105, 0.102)
 shader_parameter/scroll2 = Vector2(-0.057, 0.093)
 shader_parameter/distortion_strength = 0.1
 shader_parameter/tone_color = Color(0.217793, 0.299641, 0.148883, 1)
-shader_parameter/top_color = Color(0.721569, 0.721569, 0.721569, 0.156863)
+shader_parameter/top_color = Color(1, 1, 1, 0.145098)
 shader_parameter/light_start = 0.36
 shader_parameter/light_end = 0.865
 shader_parameter/pixel_number = 0.0

@@ -32,7 +32,7 @@ void fragment() {
 	{
 		vert_distortion_factor = 1.0;
 	}
-	
+
 	float depth = texture(noise1, tex_uv + scroll1 * TIME).r
 		* texture(noise2, tex_uv + scroll2 * TIME).r;
 	vec2 distorted_uv = tex_uv + distortion_strength * vec2(depth) * vert_distortion_factor;
@@ -48,6 +48,6 @@ void fragment() {
 		vec4 texture_col = texture(TEXTURE, distorted_uv);
 		COLOR = texture_col * tone_color;
 	}
-	
+
 	//COLOR = vec4(0.0, 0.0, 0.0, vert_distortion_factor);
 }

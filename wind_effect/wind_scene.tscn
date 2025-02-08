@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://by3ikpm0uoglv"]
 
-[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://wind_effect/example_resources/player.tscn" id="1_l40jp"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="1_l40jp"]
 [ext_resource type="Texture2D" uid="uid://drgibg8ccg1sd" path="res://wind_effect/example_resources/grass_texture.png" id="2_s5hjf"]
 [ext_resource type="PackedScene" uid="uid://dbxy8wtmydhou" path="res://wind_effect/wind_controller/wind_controller.tscn" id="3_4yfdd"]
 [ext_resource type="PackedScene" uid="uid://b26v6ws2uwa5a" path="res://wind_effect/example_resources/grass.tscn" id="4_acn73"]

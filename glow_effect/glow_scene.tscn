@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7u6ybrb8sbjo"]
+[gd_scene load_steps=5 format=3 uid="uid://b7u6ybrb8sbjo"]
 
 [ext_resource type="Texture2D" uid="uid://vjf0y2p8janw" path="res://glow_effect/example_resources/lighthouse.webp" id="1_2nbok"]
 [ext_resource type="Texture2D" uid="uid://c6xmnfpp8f02o" path="res://glow_effect/example_resources/light.webp" id="2_8kr2d"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="3_moj6e"]
 
 [sub_resource type="Environment" id="Environment_k4jl4"]
 background_mode = 3
@@ -46,3 +47,5 @@ text = "Instructions
 2. Create World Environment, set Background to Canvas and enable Glow.
 3. In the Sprite under Visibility set the Modulate raw color value to above 1.
 4. Modify the WorldEnvironment settings as needed."
+
+[node name="Player" parent="." instance=ExtResource("3_moj6e")]

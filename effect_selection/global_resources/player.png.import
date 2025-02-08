@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwam7c3y7tqf6"
-path="res://.godot/imported/player.png-53f661ed210b9969aa490b6a9b5fbedd.ctex"
+path="res://.godot/imported/player.png-c157a06a06bf7cdebf4dd01dd0deadba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wind_effect/example_resources/player.png"
-dest_files=["res://.godot/imported/player.png-53f661ed210b9969aa490b6a9b5fbedd.ctex"]
+source_file="res://effect_selection/global_resources/player.png"
+dest_files=["res://.godot/imported/player.png-c157a06a06bf7cdebf4dd01dd0deadba.ctex"]
 
 [params]
 
