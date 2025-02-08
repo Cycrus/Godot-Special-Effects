@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccfi31mwtu1sw"]
+
+[ext_resource type="Script" path="res://water_effect/water_controller/water_mirror_controller.gd" id="3_yrr1p"]
+
+[sub_resource type="Gradient" id="Gradient_4o0ge"]
+colors = PackedColorArray(0, 0.447059, 1, 1, 0, 0.447059, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8eaef"]
+gradient = SubResource("Gradient_4o0ge")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auky4"]
+size = Vector2(64, 64)
+
+[node name="Water" type="Node2D"]
+script = ExtResource("3_yrr1p")
+
+[node name="WaterSurface" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_8eaef")
+
+[node name="MirrorArea" type="Area2D" parent="."]
+
+[node name="MirrorCollisionObject" type="CollisionShape2D" parent="MirrorArea"]
+shape = SubResource("RectangleShape2D_auky4")
+
+[connection signal="area_entered" from="MirrorArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="MirrorArea" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="MirrorArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="MirrorArea" to="." method="_on_area_2d_body_exited"]

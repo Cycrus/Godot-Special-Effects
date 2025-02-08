@@ -1,14 +1,22 @@
+@tool
 extends Node2D
 
 
 @export var do_mirror: bool = false
-
+@export var mirror_detection_shape: Shape2D:
+	set(value):
+		mirror_detection_shape = value
+		_set_mirror_detection_shape(mirror_detection_shape)
+@export var water_material: ShaderMaterial:
+	set(value):
+		water_material = value
+		_set_water_material(water_material)
+@export var show_mirror_detection_shape: bool = true:
+	set(value):
+		show_mirror_detection_shape = value
+		_show_mirror_detection_shape(show_mirror_detection_shape)
 
 var mirrored_objects: Dictionary = {}
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +32,7 @@ func _process(delta: float) -> void:
 			mirrored_objects.clear()
 
 
-func add_mirrored_object(body: Node2D) -> void:
+func _add_mirrored_object(body: Node2D) -> void:
 	if do_mirror:
 		var sprite: Sprite2D = null
 		for node in body.get_parent().get_children():
@@ -38,7 +46,7 @@ func add_mirrored_object(body: Node2D) -> void:
 			"y_offset": 0.0
 		}
 		add_child(mirrored_objects[body]["sprite"])
-		mirrored_objects[body]["sprite"].z_index = -1
+		mirrored_objects[body]["sprite"].z_index = z_index - 1
 		mirrored_objects[body]["sprite"].flip_v = true
 		mirrored_objects[body]["sprite"].global_position = sprite.global_position
 		mirrored_objects[body]["sprite"].scale = Vector2(sprite.global_scale.x / global_scale.x,
@@ -47,17 +55,36 @@ func add_mirrored_object(body: Node2D) -> void:
 			mirrored_objects[body]["y_offset"] = body.get_parent().get_meta("mirror_offset")
 
 
-func remove_mirrored_object(body: Node2D) -> void:
+func _remove_mirrored_object(body: Node2D) -> void:
 	if do_mirror:
 		if not mirrored_objects.has(body):
 			return
 		mirrored_objects[body]["sprite"].queue_free()
 		mirrored_objects.erase(body)
 
+func _set_mirror_detection_shape(mirror_detection_shape: Shape2D) -> void:
+	if $MirrorArea/MirrorCollisionObject:
+		$MirrorArea/MirrorCollisionObject.shape = mirror_detection_shape
+	
+func _set_water_material(water_material: ShaderMaterial) -> void:
+	if $WaterSurface:
+		$WaterSurface.material = water_material
+		
+func _show_mirror_detection_shape(show_mirror_detection_shape: bool) -> void:
+	if $MirrorArea/MirrorCollisionObject:
+		$MirrorArea/MirrorCollisionObject.visible = show_mirror_detection_shape
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	add_mirrored_object(area)
+	_add_mirrored_object(area)
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	remove_mirrored_object(area)
+	_remove_mirrored_object(area)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	_add_mirrored_object(body)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	_remove_mirrored_object(body)

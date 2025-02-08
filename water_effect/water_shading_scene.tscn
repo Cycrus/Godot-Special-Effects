@@ -1,80 +1,11 @@
-[gd_scene load_steps=25 format=4 uid="uid://cfkh2rbdnjvn6"]
+[gd_scene load_steps=22 format=4 uid="uid://cfkh2rbdnjvn6"]
 
-[ext_resource type="Shader" path="res://water_effect/water_shader/water_shader.gdshader" id="1_421th"]
+[ext_resource type="Shader" path="res://water_effect/water_controller/water_shader.gdshader" id="1_421th"]
 [ext_resource type="Texture2D" uid="uid://d0lfkl4565iyq" path="res://water_effect/example_resources/sand.jpg" id="1_mr0ad"]
 [ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://wind_effect/example_resources/player.tscn" id="1_mw6tm"]
-[ext_resource type="Texture2D" uid="uid://bfibd3yush3dc" path="res://water_effect/example_resources/icon.svg" id="2_aqi8o"]
-[ext_resource type="Script" path="res://water_effect/water_shader/water_mirror_controller.gd" id="4_6dsii"]
-[ext_resource type="Shader" path="res://water_effect/example_resources/black_shader.gdshader" id="4_d5qfj"]
+[ext_resource type="PackedScene" uid="uid://ccfi31mwtu1sw" path="res://water_effect/water_controller/water.tscn" id="5_8djwa"]
 [ext_resource type="Texture2D" uid="uid://waucc7qdy8ag" path="res://water_effect/example_resources/grass_texture.png" id="6_48kfh"]
 [ext_resource type="Texture2D" uid="uid://r3v35i8jdvks" path="res://water_effect/example_resources/long_grass.png" id="6_jrmyk"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_s3a8f"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gjc51"]
-width = 2152
-height = 2017
-seamless = true
-noise = SubResource("FastNoiseLite_s3a8f")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_51xnj"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lj5ht"]
-width = 2052
-height = 1947
-seamless = true
-noise = SubResource("FastNoiseLite_51xnj")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhskj"]
-shader = ExtResource("1_421th")
-shader_parameter/scroll1 = Vector2(0.01, 0.01)
-shader_parameter/scroll2 = Vector2(-0.005, 0.1)
-shader_parameter/distortion_strength = 0.04
-shader_parameter/tone_color = Color(0.132325, 0.428309, 0.346652, 0.482353)
-shader_parameter/top_color = Color(1, 1, 1, 0.247059)
-shader_parameter/light_start = 0.474
-shader_parameter/light_end = 0.713
-shader_parameter/pixel_number = 0.0
-shader_parameter/noise1 = SubResource("NoiseTexture2D_gjc51")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_lj5ht")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_akuxb"]
-size = Vector2(143.8, 151.4)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5yucx"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gexsr"]
-width = 2152
-height = 2017
-seamless = true
-noise = SubResource("FastNoiseLite_5yucx")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2gn6b"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fvh0o"]
-width = 2052
-height = 1947
-seamless = true
-noise = SubResource("FastNoiseLite_2gn6b")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iy8qx"]
-shader = ExtResource("1_421th")
-shader_parameter/scroll1 = Vector2(0.01, 0.01)
-shader_parameter/scroll2 = Vector2(-0.01, -0.01)
-shader_parameter/distortion_strength = 0.00500005
-shader_parameter/tone_color = Color(0.132325, 0.428309, 0.346652, 0.482353)
-shader_parameter/top_color = Color(1, 1, 1, 0.247059)
-shader_parameter/light_start = 0.462
-shader_parameter/light_end = 0.6
-shader_parameter/pixel_number = 0.0
-shader_parameter/noise1 = SubResource("NoiseTexture2D_gexsr")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_fvh0o")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3bt0"]
-size = Vector2(143.8, 125.834)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nqfw"]
-shader = ExtResource("4_d5qfj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_48h8h"]
 texture = ExtResource("6_48kfh")
@@ -89,52 +20,74 @@ sources/0 = SubResource("TileSetAtlasSource_48h8h")
 radius = 21.0
 height = 72.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knx17"]
+size = Vector2(67.135, 73.67)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a40e7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_emtyi"]
+seamless = true
+noise = SubResource("FastNoiseLite_a40e7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d6k1y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d2rhq"]
+seamless = true
+noise = SubResource("FastNoiseLite_d6k1y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4vp2"]
+shader = ExtResource("1_421th")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(-0.05, -0.05)
+shader_parameter/distortion_strength = 0.03
+shader_parameter/tone_color = Color(0.274282, 0.371765, 0.191207, 1)
+shader_parameter/top_color = Color(1, 1, 1, 0.188235)
+shader_parameter/light_start = 0.377
+shader_parameter/light_end = 0.73
+shader_parameter/pixel_number = 0.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_emtyi")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_d2rhq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk6ck"]
+size = Vector2(64.73, 64.39)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yp4y8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_20b6r"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_yp4y8")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uie6y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pkboy"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_uie6y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gu5hk"]
+shader = ExtResource("1_421th")
+shader_parameter/scroll1 = Vector2(-0.105, 0.102)
+shader_parameter/scroll2 = Vector2(-0.057, 0.093)
+shader_parameter/distortion_strength = 0.1
+shader_parameter/tone_color = Color(0.217793, 0.299641, 0.148883, 1)
+shader_parameter/top_color = Color(0.721569, 0.721569, 0.721569, 0.156863)
+shader_parameter/light_start = 0.36
+shader_parameter/light_end = 0.865
+shader_parameter/pixel_number = 0.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_20b6r")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_pkboy")
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Sand" type="Sprite2D" parent="."]
-z_index = -3
+z_index = -4
 position = Vector2(631, 365)
 scale = Vector2(1.456, 1.63834)
 texture = ExtResource("1_mr0ad")
-
-[node name="River" type="Sprite2D" parent="."]
-z_index = -1
-material = SubResource("ShaderMaterial_xhskj")
-position = Vector2(348.5, 257)
-scale = Vector2(5.80469, 6.40625)
-texture = ExtResource("2_aqi8o")
-script = ExtResource("4_6dsii")
-do_mirror = true
-
-[node name="Area2D" type="Area2D" parent="River"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="River/Area2D"]
-visible = false
-position = Vector2(6.69999, -7.90001)
-shape = SubResource("RectangleShape2D_akuxb")
-
-[node name="Pond" type="Sprite2D" parent="."]
-z_index = -1
-material = SubResource("ShaderMaterial_iy8qx")
-position = Vector2(959.5, 242)
-scale = Vector2(3.32031, 3.6875)
-texture = ExtResource("2_aqi8o")
-script = ExtResource("4_6dsii")
-do_mirror = true
-
-[node name="Area2D" type="Area2D" parent="Pond"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pond/Area2D"]
-visible = false
-position = Vector2(6.69998, 4.88304)
-shape = SubResource("RectangleShape2D_f3bt0")
-
-[node name="Shadow" type="TileMapLayer" parent="."]
-z_index = -1
-material = SubResource("ShaderMaterial_2nqfw")
-tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD9/wcAAAAAAAAAAAD9/w0AAAAAAAAAAAD9/w4AAAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAP7/AAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAAOAP7/AAAAAAAAAAAOAP//AAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAP7/AAAAAAAAAAAPAP//AAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAARAP7/AAAAAAAAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAATAP7/AAAAAAAAAAATAP//AAAAAAAAAAATAAAAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAAVAP7/AAAAAAAAAAAVAP//AAAAAAAAAAAVAAAAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAP7/AAAAAAAAAAAWAP//AAAAAAAAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAWAA4AAAAAAAAAAAD9//v/AAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD+//v/AAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AAAAAAAAAAANAPv/AAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAARAPv/AAAAAAAAAAARAPz/AAAAAAAAAAARAP3/AAAAAAAAAAASAPv/AAAAAAAAAAASAPz/AAAAAAAAAAASAP3/AAAAAAAAAAATAPv/AAAAAAAAAAATAPz/AAAAAAAAAAATAP3/AAAAAAAAAAAUAPv/AAAAAAAAAAAUAPz/AAAAAAAAAAAUAP3/AAAAAAAAAAAVAPv/AAAAAAAAAAAVAPz/AAAAAAAAAAAVAP3/AAAAAAAAAAAWAPv/AAAAAAAAAAAWAPz/AAAAAAAAAAAWAP3/AAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAACAAoAAAAAAAAAAAABAAQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAYAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAARAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_iri3l")
 
 [node name="Grass" type="TileMapLayer" parent="."]
 position = Vector2(0, -10)
@@ -467,7 +420,20 @@ metadata/mirror_offset = 40.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(617, 239)
 
-[connection signal="area_entered" from="River/Area2D" to="River" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="River/Area2D" to="River" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Pond/Area2D" to="Pond" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Pond/Area2D" to="Pond" method="_on_area_2d_area_exited"]
+[node name="Pond" parent="." instance=ExtResource("5_8djwa")]
+z_index = -1
+position = Vector2(979, 244)
+scale = Vector2(7, 7)
+do_mirror = true
+mirror_detection_shape = SubResource("RectangleShape2D_knx17")
+water_material = SubResource("ShaderMaterial_o4vp2")
+show_mirror_detection_shape = false
+
+[node name="River" parent="." instance=ExtResource("5_8djwa")]
+z_index = -1
+position = Vector2(247, 262)
+scale = Vector2(15, 18)
+do_mirror = true
+mirror_detection_shape = SubResource("RectangleShape2D_xk6ck")
+water_material = SubResource("ShaderMaterial_gu5hk")
+show_mirror_detection_shape = false
