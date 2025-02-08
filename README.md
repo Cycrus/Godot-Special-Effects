@@ -3,6 +3,8 @@
 ## Description
 This repository contains a collection of visual effects for Godot. You can clone the repository and open the project directly in Godot to try our all effects in designated demo scenarios. I try to keep all effects as modular and portable as possible. Each effect also cones with its own ReadMe which explains its deployment. The effects are designed specifically for top down 2D games. However, most are also usable in side-scroller visuals.
 
+If you use any of those effects in your project, I would appreciate credits for them.
+
 ## Effect List
 The following effects are contained in the repository:
 
