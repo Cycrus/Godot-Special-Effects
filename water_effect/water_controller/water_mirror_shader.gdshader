@@ -19,7 +19,7 @@ uniform vec2 scroll1 = vec2(0.05, 0.05);
 uniform vec2 scroll2 = vec2(-0.05, -0.05);
 uniform float distortion_strength: hint_range(-1, 1) = 0.2;
 uniform vec4 tone_color: source_color;
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
+uniform bool floating_image = false;
 
 void vertex() {
 	VERTEX *= 2.0;
@@ -27,10 +27,15 @@ void vertex() {
 
 void fragment() {
 	vec2 tex_uv = UV * 2.0 - 0.5;
-
+	float vert_distortion_factor = 2.0 - UV.y * 2.0 - 0.5;
+	if(floating_image)
+	{
+		vert_distortion_factor = 1.0;
+	}
+	
 	float depth = texture(noise1, tex_uv + scroll1 * TIME).r
 		* texture(noise2, tex_uv + scroll2 * TIME).r;
-	vec2 distorted_uv = tex_uv + distortion_strength * vec2(depth);
+	vec2 distorted_uv = tex_uv + distortion_strength * vec2(depth) * vert_distortion_factor;
 	bool out_of_bounds = (distorted_uv.x > 1.0 || distorted_uv.y > 1.0 ||
 						  distorted_uv.x < 0.0 || distorted_uv.y < 0.0);
 
@@ -43,4 +48,6 @@ void fragment() {
 		vec4 texture_col = texture(TEXTURE, distorted_uv);
 		COLOR = texture_col * tone_color;
 	}
+	
+	//COLOR = vec4(0.0, 0.0, 0.0, vert_distortion_factor);
 }

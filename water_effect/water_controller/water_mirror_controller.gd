@@ -52,9 +52,13 @@ func _add_mirrored_object(body: Node2D) -> void:
 		mirrored_objects[body]["sprite"].global_position = sprite.global_position
 		mirrored_objects[body]["sprite"].scale = Vector2(sprite.global_scale.x / global_scale.x,
 												   		 sprite.global_scale.y / global_scale.y)
-		mirrored_objects[body]["sprite"].material = mirror_image_material
+		mirrored_objects[body]["sprite"].material = mirror_image_material.duplicate()
+		mirrored_objects[body]["sprite"].material.shader = mirror_image_material.shader.duplicate()
 		if body.get_parent().has_meta("mirror_offset"):
 			mirrored_objects[body]["y_offset"] = body.get_parent().get_meta("mirror_offset")
+			mirrored_objects[body]["sprite"].material.set("shader_parameter/floating_image", true)
+		else:
+			mirrored_objects[body]["sprite"].material.set("shader_parameter/floating_image", false)
 
 
 func _remove_mirrored_object(body: Node2D) -> void:

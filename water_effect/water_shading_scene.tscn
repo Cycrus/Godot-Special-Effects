@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cfkh2rbdnjvn6"]
+[gd_scene load_steps=33 format=4 uid="uid://cfkh2rbdnjvn6"]
 
 [ext_resource type="Shader" path="res://water_effect/water_controller/water_shader.gdshader" id="1_421th"]
 [ext_resource type="Texture2D" uid="uid://d0lfkl4565iyq" path="res://water_effect/example_resources/sand.jpg" id="1_mr0ad"]
@@ -67,6 +67,7 @@ shader_parameter/scroll1 = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(0.66, -0.05)
 shader_parameter/distortion_strength = 0.3
 shader_parameter/tone_color = Color(0.27451, 0.372549, 0.192157, 1)
+shader_parameter/floating_image = false
 shader_parameter/noise1 = SubResource("NoiseTexture2D_hvxdb")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_8aruu")
 
@@ -101,6 +102,28 @@ shader_parameter/light_end = 0.865
 shader_parameter/pixel_number = 0.0
 shader_parameter/noise1 = SubResource("NoiseTexture2D_20b6r")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_pkboy")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kiw2u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p3qe3"]
+seamless = true
+noise = SubResource("FastNoiseLite_kiw2u")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pmmnp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wgg1p"]
+seamless = true
+noise = SubResource("FastNoiseLite_pmmnp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge3hs"]
+shader = ExtResource("7_iufua")
+shader_parameter/scroll1 = Vector2(-1.03, 0.67)
+shader_parameter/scroll2 = Vector2(-0.05, -0.05)
+shader_parameter/distortion_strength = 0.568
+shader_parameter/tone_color = Color(0.27451, 0.372549, 0.192157, 1)
+shader_parameter/floating_image = false
+shader_parameter/noise1 = SubResource("NoiseTexture2D_p3qe3")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_wgg1p")
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -456,6 +479,8 @@ mirror_image_material = SubResource("ShaderMaterial_m01o8")
 z_index = -1
 position = Vector2(247, 262)
 scale = Vector2(15, 18)
+do_mirror = true
 mirror_detection_shape = SubResource("RectangleShape2D_xk6ck")
 water_material = SubResource("ShaderMaterial_gu5hk")
 show_mirror_detection_shape = false
+mirror_image_material = SubResource("ShaderMaterial_ge3hs")
