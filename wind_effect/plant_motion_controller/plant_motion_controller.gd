@@ -89,7 +89,7 @@ func _process_wavelike_movement() -> float:
 
 func _get_body_distance_vector(body: Node2D) -> Vector2:
 	var origin = global_position
-	origin.y += skewed_sprite.get_rect().size.y / 2 # Constant offset from bottom of grass object
+	origin.y += skewed_sprite.get_rect().size.y / 2
 	return body.global_position - origin
 	
 	

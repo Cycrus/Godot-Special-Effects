@@ -21,9 +21,6 @@ sources/0 = SubResource("TileSetAtlasSource_48h8h")
 radius = 21.0
 height = 72.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_knx17"]
-size = Vector2(67.135, 73.67)
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_a40e7"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_emtyi"]
@@ -49,6 +46,9 @@ shader_parameter/pixel_number = 0.0
 shader_parameter/noise1 = SubResource("NoiseTexture2D_emtyi")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_d2rhq")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knx17"]
+size = Vector2(67.135, 73.67)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cx3ub"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hvxdb"]
@@ -70,9 +70,6 @@ shader_parameter/tone_color = Color(0.12549, 0.309804, 0.258824, 1)
 shader_parameter/floating_image = false
 shader_parameter/noise1 = SubResource("NoiseTexture2D_hvxdb")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_8aruu")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk6ck"]
-size = Vector2(64.73, 64.39)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yp4y8"]
 
@@ -102,6 +99,9 @@ shader_parameter/light_end = 0.865
 shader_parameter/pixel_number = 0.0
 shader_parameter/noise1 = SubResource("NoiseTexture2D_20b6r")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_pkboy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk6ck"]
+size = Vector2(64.73, 64.39)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kiw2u"]
 
@@ -459,7 +459,6 @@ shape = SubResource("CapsuleShape2D_ba31o")
 [node name="Player" parent="." instance=ExtResource("1_mw6tm")]
 z_index = 1
 position = Vector2(288, 220)
-metadata/mirror_offset = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(617, 239)
@@ -468,9 +467,9 @@ position = Vector2(617, 239)
 z_index = -1
 position = Vector2(979, 244)
 scale = Vector2(7, 7)
+water_material = SubResource("ShaderMaterial_o4vp2")
 do_mirror = true
 mirror_detection_shape = SubResource("RectangleShape2D_knx17")
-water_material = SubResource("ShaderMaterial_o4vp2")
 show_mirror_detection_shape = false
 mirror_image_material = SubResource("ShaderMaterial_m01o8")
 
@@ -478,8 +477,8 @@ mirror_image_material = SubResource("ShaderMaterial_m01o8")
 z_index = -1
 position = Vector2(247, 262)
 scale = Vector2(15, 18)
+water_material = SubResource("ShaderMaterial_gu5hk")
 do_mirror = true
 mirror_detection_shape = SubResource("RectangleShape2D_xk6ck")
-water_material = SubResource("ShaderMaterial_gu5hk")
 show_mirror_detection_shape = false
 mirror_image_material = SubResource("ShaderMaterial_ge3hs")

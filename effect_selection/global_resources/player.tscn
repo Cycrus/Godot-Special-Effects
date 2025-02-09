@@ -53,10 +53,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_bf0y5")
 hframes = 4
 
-[node name="StaticBody2D" type="Area2D" parent="."]
+[node name="Body" type="Area2D" parent="."]
 metadata/moves_plants = true
+metadata/mirror_y_offset = 30.0
+metadata/mirrored = true
 
-[node name="Collider" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Collider" type="CollisionShape2D" parent="Body"]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_35xmi")
 
