@@ -48,6 +48,4 @@ void fragment() {
 		vec4 texture_col = texture(TEXTURE, distorted_uv);
 		COLOR = texture_col * tone_color;
 	}
-
-	//COLOR = vec4(0.0, 0.0, 0.0, vert_distortion_factor);
 }

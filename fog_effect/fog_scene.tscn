@@ -20,7 +20,7 @@ shader_parameter/intensity_change_speed = 2.2
 shader_parameter/intensity_change_min = 0.3
 shader_parameter/clear_radius = 0.5
 shader_parameter/clear_softness = 0.3
-shader_parameter/pixel_number = 0.0
+shader_parameter/pixel_number = 400.0
 shader_parameter/noise = SubResource("NoiseTexture2D_4pq7r")
 
 [sub_resource type="Gradient" id="Gradient_u2pru"]
