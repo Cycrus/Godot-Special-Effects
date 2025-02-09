@@ -17,60 +17,6 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_48h8h")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ba31o"]
-radius = 21.0
-height = 72.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a40e7"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_emtyi"]
-seamless = true
-noise = SubResource("FastNoiseLite_a40e7")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_d6k1y"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d2rhq"]
-seamless = true
-noise = SubResource("FastNoiseLite_d6k1y")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4vp2"]
-shader = ExtResource("1_421th")
-shader_parameter/scroll1 = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(-0.05, -0.05)
-shader_parameter/distortion_strength = 0.03
-shader_parameter/tone_color = Color(0.12549, 0.309804, 0.258824, 1)
-shader_parameter/top_color = Color(1, 1, 1, 0.188235)
-shader_parameter/light_start = 0.377
-shader_parameter/light_end = 0.73
-shader_parameter/pixel_number = 0.0
-shader_parameter/noise1 = SubResource("NoiseTexture2D_emtyi")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_d2rhq")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_knx17"]
-size = Vector2(67.135, 73.67)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cx3ub"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hvxdb"]
-seamless = true
-noise = SubResource("FastNoiseLite_cx3ub")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_chr4w"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8aruu"]
-seamless = true
-noise = SubResource("FastNoiseLite_chr4w")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m01o8"]
-shader = ExtResource("7_iufua")
-shader_parameter/scroll1 = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(0.66, -0.05)
-shader_parameter/distortion_strength = 0.0600001
-shader_parameter/tone_color = Color(0.12549, 0.309804, 0.258824, 1)
-shader_parameter/floating_image = false
-shader_parameter/noise1 = SubResource("NoiseTexture2D_hvxdb")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_8aruu")
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yp4y8"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_20b6r"]
@@ -125,11 +71,65 @@ shader_parameter/floating_image = false
 shader_parameter/noise1 = SubResource("NoiseTexture2D_p3qe3")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_wgg1p")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a40e7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_emtyi"]
+seamless = true
+noise = SubResource("FastNoiseLite_a40e7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d6k1y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d2rhq"]
+seamless = true
+noise = SubResource("FastNoiseLite_d6k1y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4vp2"]
+shader = ExtResource("1_421th")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(-0.05, -0.05)
+shader_parameter/distortion_strength = 0.03
+shader_parameter/tone_color = Color(0.12549, 0.309804, 0.258824, 1)
+shader_parameter/top_color = Color(1, 1, 1, 0.188235)
+shader_parameter/light_start = 0.377
+shader_parameter/light_end = 0.73
+shader_parameter/pixel_number = 0.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_emtyi")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_d2rhq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knx17"]
+size = Vector2(67.135, 73.67)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cx3ub"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hvxdb"]
+seamless = true
+noise = SubResource("FastNoiseLite_cx3ub")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_chr4w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8aruu"]
+seamless = true
+noise = SubResource("FastNoiseLite_chr4w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m01o8"]
+shader = ExtResource("7_iufua")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.66, -0.05)
+shader_parameter/distortion_strength = 0.0600001
+shader_parameter/tone_color = Color(0.12549, 0.309804, 0.258824, 1)
+shader_parameter/floating_image = false
+shader_parameter/noise1 = SubResource("NoiseTexture2D_hvxdb")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_8aruu")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ba31o"]
+radius = 21.0
+height = 72.0
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Sand" type="Sprite2D" parent="."]
-z_index = -4
+z_index = -5
 position = Vector2(631, 365)
 scale = Vector2(1.456, 1.63834)
 texture = ExtResource("1_mr0ad")
@@ -139,6 +139,26 @@ position = Vector2(0, -10)
 tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD9/wcAAAAAAAAAAAD9/w0AAAAAAAAAAAD9/w4AAAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAMAP7/AAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAAOAP7/AAAAAAAAAAAOAP//AAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAP7/AAAAAAAAAAAPAP//AAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAARAP7/AAAAAAAAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAASAP7/AAAAAAAAAAASAP//AAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAATAP7/AAAAAAAAAAATAP//AAAAAAAAAAATAAAAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAAVAP7/AAAAAAAAAAAVAP//AAAAAAAAAAAVAAAAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAP7/AAAAAAAAAAAWAP//AAAAAAAAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAWAA4AAAAAAAAAAAD9//v/AAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD+//v/AAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAACAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAJAPv/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAALAPv/AAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAAMAPv/AAAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AAAAAAAAAAANAPv/AAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAPv/AAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAARAPv/AAAAAAAAAAARAPz/AAAAAAAAAAARAP3/AAAAAAAAAAASAPv/AAAAAAAAAAASAPz/AAAAAAAAAAASAP3/AAAAAAAAAAATAPv/AAAAAAAAAAATAPz/AAAAAAAAAAATAP3/AAAAAAAAAAAUAPv/AAAAAAAAAAAUAPz/AAAAAAAAAAAUAP3/AAAAAAAAAAAVAPv/AAAAAAAAAAAVAPz/AAAAAAAAAAAVAP3/AAAAAAAAAAAWAPv/AAAAAAAAAAAWAPz/AAAAAAAAAAAWAP3/AAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAACAAoAAAAAAAAAAAABAAQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAYAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAARAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_iri3l")
 
+[node name="River" parent="." instance=ExtResource("5_8djwa")]
+z_index = -1
+position = Vector2(245, 271)
+scale = Vector2(15, 18)
+water_material = SubResource("ShaderMaterial_gu5hk")
+do_mirror = true
+mirror_detection_shape = SubResource("RectangleShape2D_xk6ck")
+show_mirror_detection_shape = false
+mirror_image_material = SubResource("ShaderMaterial_ge3hs")
+
+[node name="Pond" parent="." instance=ExtResource("5_8djwa")]
+z_index = -1
+position = Vector2(979, 244)
+scale = Vector2(7, 7)
+water_material = SubResource("ShaderMaterial_o4vp2")
+do_mirror = true
+mirror_detection_shape = SubResource("RectangleShape2D_knx17")
+show_mirror_detection_shape = false
+mirror_image_material = SubResource("ShaderMaterial_m01o8")
+
 [node name="GrassContainer" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
@@ -146,7 +166,8 @@ position = Vector2(-50, 28)
 
 [node name="Grass" type="Node2D" parent="GrassContainer"]
 y_sort_enabled = true
-position = Vector2(-1, -51)
+position = Vector2(179, -51)
+rotation = 0.644027
 
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass"]
 position = Vector2(337, 185)
@@ -167,21 +188,26 @@ position = Vector2(469, 265)
 
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass2"]
 y_sort_enabled = true
-skew = 0.450295
+position = Vector2(1, 31)
+skew = 0.832522
 texture = ExtResource("6_jrmyk")
+offset = Vector2(-1, -31)
 
 [node name="Area2D" type="Area2D" parent="GrassContainer/Grass2"]
 y_sort_enabled = true
 metadata/mirrored = true
+metadata/mirror_y_offset = 17.055
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrassContainer/Grass2/Area2D"]
+visible = false
 y_sort_enabled = true
 position = Vector2(2, 0)
 shape = SubResource("CapsuleShape2D_ba31o")
 
 [node name="Grass3" type="Node2D" parent="GrassContainer"]
 y_sort_enabled = true
-position = Vector2(602, 89)
+position = Vector2(477, 61)
+scale = Vector2(2, 1)
 
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass3"]
 y_sort_enabled = true
@@ -205,7 +231,8 @@ position = Vector2(559, -104)
 
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass4"]
 y_sort_enabled = true
-position = Vector2(337, 185)
+position = Vector2(341, 179)
+scale = Vector2(1, 2)
 texture = ExtResource("6_jrmyk")
 
 [node name="Area2D" type="Area2D" parent="GrassContainer/Grass4"]
@@ -225,8 +252,10 @@ position = Vector2(771, -80)
 
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass5"]
 y_sort_enabled = true
-position = Vector2(337, 185)
+position = Vector2(337, 216)
+rotation = -0.450295
 texture = ExtResource("6_jrmyk")
+offset = Vector2(0, -31)
 
 [node name="Area2D" type="Area2D" parent="GrassContainer/Grass5"]
 y_sort_enabled = true
@@ -462,23 +491,3 @@ position = Vector2(288, 220)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(617, 239)
-
-[node name="Pond" parent="." instance=ExtResource("5_8djwa")]
-z_index = -1
-position = Vector2(979, 244)
-scale = Vector2(7, 7)
-water_material = SubResource("ShaderMaterial_o4vp2")
-do_mirror = true
-mirror_detection_shape = SubResource("RectangleShape2D_knx17")
-show_mirror_detection_shape = false
-mirror_image_material = SubResource("ShaderMaterial_m01o8")
-
-[node name="River" parent="." instance=ExtResource("5_8djwa")]
-z_index = -1
-position = Vector2(247, 262)
-scale = Vector2(15, 18)
-water_material = SubResource("ShaderMaterial_gu5hk")
-do_mirror = true
-mirror_detection_shape = SubResource("RectangleShape2D_xk6ck")
-show_mirror_detection_shape = false
-mirror_image_material = SubResource("ShaderMaterial_ge3hs")

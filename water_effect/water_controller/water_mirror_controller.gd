@@ -29,6 +29,12 @@ extends Node2D
 @export var mirror_image_material: ShaderMaterial
 
 
+class MirrorableObject:
+	var sprite: Sprite2D = null
+	var original_sprite: Sprite2D = null
+	var texture_image: Image = null
+
+
 var mirrored_objects: Dictionary = {}
 var perform_rescan: bool = false
 
@@ -65,9 +71,9 @@ func _crop_current_animation_frame(original_sprite: Sprite2D, image_texture: Ima
 
 
 func _update_mirror_image(body: Node2D) -> void:
-	var sprite = mirrored_objects[body]["sprite"]
-	var original_sprite = mirrored_objects[body]["original_sprite"]
-	var image_texture = mirrored_objects[body]["texture_image"]
+	var sprite = mirrored_objects[body].sprite
+	var original_sprite = mirrored_objects[body].original_sprite
+	var image_texture = mirrored_objects[body].texture_image
 	var y_offset = 0.0
 	
 	var cropped_animation_frame: ImageTexture = _crop_current_animation_frame(original_sprite, image_texture)
@@ -79,9 +85,11 @@ func _update_mirror_image(body: Node2D) -> void:
 	else:
 		sprite.material.set("shader_parameter/floating_image", false)
 	
+	sprite.offset = original_sprite.offset * -1
 	sprite.global_position = original_sprite.global_position
 	sprite.global_position.y += sprite.texture.get_height() * sprite.global_scale.y + y_offset
 	sprite.skew = original_sprite.skew * -1
+	sprite.global_rotation = original_sprite.global_rotation * -1
 	sprite.scale = Vector2(original_sprite.global_scale.x / global_scale.x,
 						   original_sprite.global_scale.y / global_scale.y)
 
@@ -91,15 +99,15 @@ func _extract_texture_image(sprite: Sprite2D) -> Image:
 	return texture_image
 	
 
-func _prepare_mirrored_sprite(mirrored_sprite_dict: Dictionary) -> void:
-	mirrored_sprite_dict["sprite"].z_index = z_index + 1
-	mirrored_sprite_dict["sprite"].flip_v = true
-	mirrored_sprite_dict["sprite"].hframes = 1
-	mirrored_sprite_dict["sprite"].vframes = 1
-	mirrored_sprite_dict["sprite"].frame = 0
-	mirrored_sprite_dict["sprite"].frame_coords = Vector2(0, 0)
-	mirrored_sprite_dict["sprite"].material = mirror_image_material.duplicate()
-	mirrored_sprite_dict["sprite"].material.shader = mirror_image_material.shader.duplicate()
+func _prepare_mirrored_sprite(mirrored_sprite_object: MirrorableObject) -> void:
+	mirrored_sprite_object.sprite.z_index = z_index + 1
+	mirrored_sprite_object.sprite.flip_v = true
+	mirrored_sprite_object.sprite.hframes = 1
+	mirrored_sprite_object.sprite.vframes = 1
+	mirrored_sprite_object.sprite.frame = 0
+	mirrored_sprite_object.sprite.frame_coords = Vector2(0, 0)
+	mirrored_sprite_object.sprite.material = mirror_image_material.duplicate()
+	mirrored_sprite_object.sprite.material.shader = mirror_image_material.shader.duplicate()
 
 
 func _add_mirrored_object(body: Node2D) -> void:
@@ -119,15 +127,15 @@ func _add_mirrored_object(body: Node2D) -> void:
 	if sprite == null:
 		return
 		
-	var full_texture_image = _extract_texture_image(sprite)
-	mirrored_objects[body] = {
-		"sprite": sprite.duplicate(),
-		"original_sprite": sprite,
-		"texture_image": full_texture_image
-	}
+	var full_texture_image: Image = _extract_texture_image(sprite)
+	mirrored_objects[body] = MirrorableObject.new()
+	mirrored_objects[body].sprite = sprite.duplicate()
+	mirrored_objects[body].original_sprite = sprite
+	mirrored_objects[body].texture_image = full_texture_image
+	
 	_prepare_mirrored_sprite(mirrored_objects[body])
 	_update_mirror_image(body)
-	add_child(mirrored_objects[body]["sprite"])
+	add_child(mirrored_objects[body].sprite)
 
 
 func _remove_mirrored_object(body: Node2D) -> void:
@@ -135,7 +143,7 @@ func _remove_mirrored_object(body: Node2D) -> void:
 		return
 	if perform_rescan:
 		return
-	mirrored_objects[body]["sprite"].queue_free()
+	mirrored_objects[body].sprite.queue_free()
 	mirrored_objects.erase(body)
 		
 

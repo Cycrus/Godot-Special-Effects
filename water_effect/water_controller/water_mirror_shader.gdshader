@@ -1,14 +1,13 @@
-/* Creates a water effect.
+/* Creates a realistic mirror image effect on water. Must be applied to the mirrored image.
  * @param noise1 The first water distortion effect.
  * @param noise2 A second (mostly contrary) distortion effect for more realism.
  * @param scroll1 The scroll vector (direction & speed) of noise1 over time.
  * @param scroll2 The scroll vector of noise2 over time.
- * @param distortion_strength The strength of distortion on the underlying objects behind the water.
- * @param tone_color The color of the water.
- * @param top_color The color of the highlights.
- * @param light_start, light_end The range of the highlights on the noise texture. Controls how much highlight is visible.
- * @param pixel_number An additional parameter to set the number of pixels the shader should display itself.
- *                     Allows for a pixelated look of the water. Set to 0 to deactivate.
+ * @param distortion_strength The strength of distortion on the mirrored image.
+ * @param tone_color The color of the mirrored image. Is only multiplied, not colored.
+ * @param floating_image If set to false, the top part of the image is not distorted, to allow better connection
+ *                       of the mirrored image to the original object. If set to true the object is believed to
+ *                       be floating and does not need this effect to look good.
  */
 
 shader_type canvas_item;

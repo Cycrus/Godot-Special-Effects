@@ -12,9 +12,11 @@ gradient = SubResource("Gradient_4o0ge")
 size = Vector2(64, 64)
 
 [node name="Water" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("3_yrr1p")
 
 [node name="WaterSurface" type="Sprite2D" parent="."]
+z_index = -1
 texture = SubResource("GradientTexture2D_8eaef")
 
 [node name="MirrorArea" type="Area2D" parent="."]
