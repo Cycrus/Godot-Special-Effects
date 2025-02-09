@@ -164,13 +164,33 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-50, 28)
 
+[node name="Grass17" type="Node2D" parent="GrassContainer"]
+y_sort_enabled = true
+position = Vector2(487, 279)
+
+[node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass17"]
+y_sort_enabled = true
+position = Vector2(1, 31)
+skew = -0.207694
+texture = ExtResource("6_jrmyk")
+offset = Vector2(-1, -31)
+
+[node name="Area2D" type="Area2D" parent="GrassContainer/Grass17"]
+y_sort_enabled = true
+metadata/mirrored = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassContainer/Grass17/Area2D"]
+visible = false
+y_sort_enabled = true
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_ba31o")
+
 [node name="Grass" type="Node2D" parent="GrassContainer"]
 y_sort_enabled = true
 position = Vector2(179, -51)
-rotation = 0.644027
 
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass"]
-position = Vector2(337, 185)
+position = Vector2(337, 216)
 texture = ExtResource("6_jrmyk")
 
 [node name="Area2D" type="Area2D" parent="GrassContainer/Grass"]
@@ -179,28 +199,6 @@ metadata/mirrored = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrassContainer/Grass/Area2D"]
 visible = false
-position = Vector2(2, 0)
-shape = SubResource("CapsuleShape2D_ba31o")
-
-[node name="Grass2" type="Node2D" parent="GrassContainer"]
-y_sort_enabled = true
-position = Vector2(469, 265)
-
-[node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass2"]
-y_sort_enabled = true
-position = Vector2(1, 31)
-skew = 0.832522
-texture = ExtResource("6_jrmyk")
-offset = Vector2(-1, -31)
-
-[node name="Area2D" type="Area2D" parent="GrassContainer/Grass2"]
-y_sort_enabled = true
-metadata/mirrored = true
-metadata/mirror_y_offset = 17.055
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassContainer/Grass2/Area2D"]
-visible = false
-y_sort_enabled = true
 position = Vector2(2, 0)
 shape = SubResource("CapsuleShape2D_ba31o")
 
@@ -253,7 +251,6 @@ position = Vector2(771, -80)
 [node name="Sprite" type="Sprite2D" parent="GrassContainer/Grass5"]
 y_sort_enabled = true
 position = Vector2(337, 216)
-rotation = -0.450295
 texture = ExtResource("6_jrmyk")
 offset = Vector2(0, -31)
 

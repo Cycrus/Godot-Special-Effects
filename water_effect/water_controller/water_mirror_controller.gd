@@ -85,9 +85,17 @@ func _update_mirror_image(body: Node2D) -> void:
 	else:
 		sprite.material.set("shader_parameter/floating_image", false)
 	
-	sprite.offset = original_sprite.offset * -1
 	sprite.global_position = original_sprite.global_position
 	sprite.global_position.y += sprite.texture.get_height() * sprite.global_scale.y + y_offset
+	# Correct position and offset by changing sprite rotation points
+	sprite.offset.x = original_sprite.offset.x * -0.5
+	sprite.offset.y = original_sprite.offset.y * -0.5
+	sprite.global_position.y += original_sprite.offset.y * 2
+	sprite.global_position.x += original_sprite.offset.x * 2
+	# Correct skewing offset
+	sprite.global_position.y += abs(original_sprite.skew) * 6
+	# Correct rotation offset
+	sprite.global_position.y += fposmod(abs(original_sprite.rotation), TAU / 2) * 5
 	sprite.skew = original_sprite.skew * -1
 	sprite.global_rotation = original_sprite.global_rotation * -1
 	sprite.scale = Vector2(original_sprite.global_scale.x / global_scale.x,
