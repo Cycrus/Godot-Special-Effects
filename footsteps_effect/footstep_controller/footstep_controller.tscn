@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsb01umr6etb1"]
+
+[ext_resource type="Script" path="res://footsteps_effect/footstep_controller/footstep_controller.gd" id="1_l06lc"]
+
+[node name="FootstepController" type="Node2D"]
+script = ExtResource("1_l06lc")
+
+[node name="FootstepContainer" type="Node" parent="."]

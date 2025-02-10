@@ -26,3 +26,7 @@ func _on_water_pressed() -> void:
 
 func _on_wind_pressed() -> void:
 	get_tree().change_scene_to_file("res://wind_effect/wind_scene.tscn")
+
+
+func _on_footprints_pressed() -> void:
+	get_tree().change_scene_to_file("res://footsteps_effect/footsteps_scene.tscn")

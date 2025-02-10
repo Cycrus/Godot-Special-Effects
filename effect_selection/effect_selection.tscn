@@ -75,6 +75,14 @@ offset_bottom = 425.0
 theme_override_font_sizes/font_size = 30
 text = "Wind Effect"
 
+[node name="Footprints" type="Button" parent="CanvasLayer"]
+offset_left = 390.0
+offset_top = 471.0
+offset_right = 670.0
+offset_bottom = 521.0
+theme_override_font_sizes/font_size = 30
+text = "Footprints Effect"
+
 [node name="Player" parent="CanvasLayer" instance=ExtResource("2_7ru2u")]
 
 [connection signal="pressed" from="CanvasLayer/Downfall" to="." method="_on_downfall_pressed"]
@@ -84,3 +92,4 @@ text = "Wind Effect"
 [connection signal="pressed" from="CanvasLayer/Texture Splatting" to="." method="_on_texture_splatting_pressed"]
 [connection signal="pressed" from="CanvasLayer/Water" to="." method="_on_water_pressed"]
 [connection signal="pressed" from="CanvasLayer/Wind" to="." method="_on_wind_pressed"]
+[connection signal="pressed" from="CanvasLayer/Footprints" to="." method="_on_footprints_pressed"]

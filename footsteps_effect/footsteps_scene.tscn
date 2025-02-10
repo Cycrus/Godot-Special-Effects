@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://biprwodil15um"]
+
+[ext_resource type="Script" path="res://footsteps_effect/example_resources/toggle_footprints.gd" id="1_pp8kn"]
+[ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="1_v6hbw"]
+[ext_resource type="PackedScene" uid="uid://bsb01umr6etb1" path="res://footsteps_effect/footstep_controller/footstep_controller.tscn" id="2_6jwon"]
+[ext_resource type="Texture2D" uid="uid://uiw4fyr854cv" path="res://footsteps_effect/example_resources/footprint.png" id="3_mj1t6"]
+
+[sub_resource type="Gradient" id="Gradient_50pnd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_igank"]
+gradient = SubResource("Gradient_50pnd")
+
+[node name="FootstepsScene" type="Node2D"]
+script = ExtResource("1_pp8kn")
+
+[node name="Snowfield" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(578, 325)
+scale = Vector2(20, 12)
+texture = SubResource("GradientTexture2D_igank")
+
+[node name="Player" parent="." instance=ExtResource("1_v6hbw")]
+
+[node name="FootstepController" parent="Player" instance=ExtResource("2_6jwon")]
+footstep_texture = ExtResource("3_mj1t6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 317)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b72whg3ckcjsc"]
 
-[ext_resource type="Script" path="res://wind_effect/example_resources/player_behavior.gd" id="1_oxj2w"]
+[ext_resource type="Script" path="res://effect_selection/global_resources/player_behavior.gd" id="1_oxj2w"]
 [ext_resource type="Texture2D" uid="uid://dwam7c3y7tqf6" path="res://effect_selection/global_resources/player.png" id="2_bf0y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35xmi"]

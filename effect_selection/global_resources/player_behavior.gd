@@ -27,13 +27,11 @@ func _input(event: InputEvent) -> void:
 						node.rescan_mirrored_objects()
 				print("Toggled mirrored")
 				print("Toggled plant mover")
-				print("")
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:
 				var mirror_y_offset = $Body.get_meta("mirror_y_offset")
 				mirror_y_offset += 10
 				if mirror_y_offset > 50:
-					mirror_y_offset = 0
+					mirror_y_offset = -20
 				$Body.set_meta("mirror_y_offset", mirror_y_offset)
 				print("Increased mirror_y_offset")
-				print("")
