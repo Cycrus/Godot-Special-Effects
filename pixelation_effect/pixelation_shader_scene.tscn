@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://d6kkk1n2enuq"]
+[gd_scene load_steps=9 format=3 uid="uid://d6kkk1n2enuq"]
 
-[ext_resource type="Shader" path="res://pixelation_effect/pixelation_shader/pixelation_shader.gdshader" id="1_7vjry"]
+[ext_resource type="Shader" path="res://pixelation_effect/pixelation_shader/texture_pixelation_shader.gdshader" id="1_7vjry"]
 [ext_resource type="Texture2D" uid="uid://2lyo2v88b6lp" path="res://pixelation_effect/example_resources/skyline.jpg" id="2_alx87"]
 [ext_resource type="PackedScene" uid="uid://b72whg3ckcjsc" path="res://effect_selection/global_resources/player.tscn" id="3_q4ofg"]
+[ext_resource type="Shader" path="res://pixelation_effect/pixelation_shader/scene_pixelation_shader.gdshader" id="4_jphw4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sec00"]
 shader = ExtResource("1_7vjry")
-shader_parameter/pixel_number_x = 400.0
+shader_parameter/pixel_number_x = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8jss"]
+shader = ExtResource("4_jphw4")
+shader_parameter/pixel_number_x = 512.0
+
+[sub_resource type="Gradient" id="Gradient_b2xfd"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pr7ut"]
+gradient = SubResource("Gradient_b2xfd")
 
 [node name="PixelationShaderScene" type="Node2D"]
 
@@ -16,3 +26,12 @@ position = Vector2(715, 254)
 texture = ExtResource("2_alx87")
 
 [node name="Player" parent="." instance=ExtResource("3_q4ofg")]
+
+[node name="PixelFilter" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_t8jss")
+position = Vector2(667, 353)
+scale = Vector2(19.0469, 10.9688)
+texture = SubResource("GradientTexture2D_pr7ut")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(591, 334)

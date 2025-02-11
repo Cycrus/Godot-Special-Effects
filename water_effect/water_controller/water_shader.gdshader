@@ -23,7 +23,7 @@ uniform vec4 top_color: source_color;
 uniform float light_start: hint_range(0.0, 1.0) = 0.275;
 uniform float light_end: hint_range(0.0, 1.0) = 0.4;
 uniform float pixel_number = 0;
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_nearest;
 
 void fragment() {
 	vec2 tex_uv = UV;
