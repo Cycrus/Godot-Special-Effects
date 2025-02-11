@@ -11,6 +11,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var cursor_pos = get_viewport().get_mouse_position()
+	if $"../Camera2D":
+		cursor_pos = $"../Camera2D".get_global_mouse_position()
 	global_position = cursor_pos
 
 
